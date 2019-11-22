@@ -12,4 +12,19 @@ class NguoiChoi extends Model
     protected $table = 'nguoi_choi';
     protected $fillable = ['ten_dang_nhap', 'mat_khau', 'email', 'hinh_dai_dien', 'diem_cao_nhat', 'credit'];
     protected $hidden = ['mat_khau'];
+    
+    public function getAuthPassword()
+    {
+    	return $this->mat_khau;
+    }
+    
+    public function getJWTIdentifier()
+    {
+        return $this->getKey();
+    }
+    
+    public function getJWTCustomClaims()
+    {
+        return [];
+    }
 }

@@ -20,12 +20,15 @@ Route::namespace('API')->group(function()
 {
 	Route::prefix('linh-vuc')->group(function(){
 	Route::get('/','LinhVucAPI@DSLinhVuc');
-	Route::get('/{id}','LinhVucAPI@DScauhoiTheoLinhVuc');
 	});
-	Route::prefix('nguoi-choi')->group(function(){
-	Route::get('/','NguoiChoiAPI@layDanhSach');
-	//Route::get('/{id}','LinhVucAPI@DScauhoiTheoLinhVuc');
-	});
+	Route::prefix('goi-credit')->group(function() {
+			Route::get('/', 'GoiCreditAPI@DSGoiCredit');
+			Route::get('/{id}', 'GoiCreditAPI@ChiTietGoiCredit');
+		});
+	Route::prefix('nguoi-choi')->group(function() {
+			Route::get('/', 'NguoiChoiAPI@LayDSNguoiChoi');
+			Route::get('/{id}', 'NguoiChoiAPI@ChiTietNguoiChoi');		
+		});
 	Route::prefix('cau-hoi')->group(function(){
 	Route::get('/{id}','CauHoiAPI@DScauhoi');
 });
