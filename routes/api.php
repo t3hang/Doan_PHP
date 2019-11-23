@@ -29,7 +29,9 @@ Route::namespace('API')->group(function()
 			Route::get('/', 'NguoiChoiAPI@LayDSNguoiChoi');
 			Route::get('/{id}', 'NguoiChoiAPI@ChiTietNguoiChoi');		
 		});
-	Route::prefix('cau-hoi')->group(function(){
-	Route::get('/{id}','CauHoiAPI@DScauhoi');
-});
+	Route::get('xep-hang', "NguoiChoiAPI@xepHang");
+// 	Route::prefix('cau-hoi')->group(function(){
+// 	Route::get('/{id}','CauHoiAPI@DScauhoi');
+// });
+	Route::get('cau-hoi', 'CauHoiAPI@cauHoiTheoLinhVuc');
 });
