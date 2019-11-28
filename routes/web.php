@@ -85,7 +85,7 @@ Route::prefix('lich-su-credit')->group(function()
 });
 
 
-Route::get("/","QuanTriVienController@getlogin")->name("get-login")->middleware("guest");
+Route::get("dang-nhap","QuanTriVienController@getlogin")->name("get-login")->middleware("guest");
 Route::post("/","QuanTriVienController@postlogin")->name("post-login");
 Route::get("dang-xuat","QuanTriVienController@logout")->name("logout");
 
