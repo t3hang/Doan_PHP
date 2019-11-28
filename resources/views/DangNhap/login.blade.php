@@ -24,6 +24,8 @@
             <div class="container">
                 <div class="row justify-content-center">
                     <div class="col-md-8 col-lg-6 col-xl-5">
+                    @include('ThongBao.errors')
+
                         <div class="card">
 
                             <div class="card-body p-4">
@@ -46,7 +48,6 @@
                                         class="form-control" 
                                         type="" 
                                         id="emailaddress" 
-                                        required="" 
                                         placeholder="Enter your email"
                                         name="ten_dang_nhap">
                                     </div>
@@ -56,7 +57,6 @@
                                         <input 
                                         class="form-control" 
                                         type="password" 
-                                        required="" 
                                         id="password" 
                                         placeholder="Enter your password"
                                         name="password">
