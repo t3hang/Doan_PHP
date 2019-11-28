@@ -26,7 +26,7 @@ Route::namespace('API')->group(function()
 			Route::get('/{id}', 'GoiCreditAPI@ChiTietGoiCredit');
 		});
 	Route::prefix('nguoi-choi')->group(function() {
-			Route::get('/', 'NguoiChoiAPI@LayDSNguoiChoi');
+			Route::get('/', 'NguoiChoiAPI@xepHang');
 			Route::get('/{id}', 'NguoiChoiAPI@ChiTietNguoiChoi');		
 		});
 	Route::prefix('cau-hoi')->group(function(){

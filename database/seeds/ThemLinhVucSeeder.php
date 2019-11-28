@@ -16,5 +16,8 @@ class ThemLinhVucSeeder extends Seeder
         LinhVuc::create(['ten_linh_vuc'=> 'Âm Nhạc']);
         LinhVuc::create(['ten_linh_vuc'=> 'Thể Thao']);
         LinhVuc::create(['ten_linh_vuc'=> 'Lịch Sử']);
+        LinhVuc::create(['ten_linh_vuc'=> 'Toán Học']);
+        LinhVuc::create(['ten_linh_vuc'=> 'Hóa Học']);
+        LinhVuc::create(['ten_linh_vuc'=> 'Địa Lý']);
     }
 }
