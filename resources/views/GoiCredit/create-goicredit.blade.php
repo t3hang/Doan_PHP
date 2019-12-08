@@ -21,17 +21,17 @@
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Tên gói</label>
-                                        <input type="text" class="form-control" id="Ten_goi" name="Ten_goi" required="">
+                                        <input type="text" class="form-control" id="Ten_goi" name="Ten_goi">
                                     </div>
                                 
                                   <div class="form-group">
                                         <label for="exampleInputEmail1">Credit</label>
-                                        <input type="text" class="form-control" id="Credit" name="Credit" required="">
+                                        <input type="text" class="form-control" id="Credit" name="Credit">
                                     </div>
                                   
                                   <div class="form-group">
                                         <label for="exampleInputEmail1">Số Tiền</label>
-                                        <input type="number" class="form-control" id="So_tien"  name="So_tien" required="">
+                                        <input type="number" class="form-control" id="So_tien"  name="So_tien">
                                     </div>
                                    
                                     <button type="submit" class="btn btn-primary waves-effect waves-light"><i class=" mdi mdi-content-save-all"> Thêm</i></button>

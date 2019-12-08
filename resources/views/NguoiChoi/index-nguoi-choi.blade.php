@@ -96,8 +96,7 @@
                                           <td>
                                           <form action="{{ route('nguoi-choi.remove', ['id' => $nguoichoi->id ]) }}" method="POST">
                                                     {{ csrf_field() }}
-                                                    {{ method_field('DELETE') }} 
-                                              <button type="button" class="btn btn-purple waves-effect waves-light"><i class="mdi mdi-pencil-plus">Sửa</i></button>  
+                                                    {{ method_field('DELETE') }}   
                                               <button type="submit" class="btn btn-danger waves-effect waves-light xoa-nguoi-choi"><i class=" mdi mdi-trash-can-outline">Xóa</i></button>
                                           </form>
 

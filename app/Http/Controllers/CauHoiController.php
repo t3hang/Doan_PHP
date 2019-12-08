@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\CauHoi;
 use App\LinhVuc;
+use App\Http\Requests\CauHoiRq;
 
 class CauHoiController extends Controller
 {
@@ -38,7 +39,7 @@ class CauHoiController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CauHoiRq $request)
     {
         //
         try{

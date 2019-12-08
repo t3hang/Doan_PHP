@@ -20,7 +20,7 @@
 
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Nội Dung</label>
-                                        <input type="text" class="form-control" id="noi_dung" name="noi_dung" required="">
+                                        <input type="text" class="form-control" id="noi_dung" name="noi_dung">
                                     </div>
                                     <div class="form-group">
                                         <label for="exampleInputEmail1">Lĩnh Vực</label>
@@ -37,21 +37,21 @@
                                   
                                   <div class="form-group">
                                         <label for="exampleInputEmail1">Phương Án A</label>
-                                        <input type="text" class="form-control" id="phuong_an_A" name="phuong_an_A" required="">
+                                        <input type="text" class="form-control" id="phuong_an_A" name="phuong_an_A">
                                     </div>
                                   
                                   <div class="form-group">
                                         <label for="exampleInputEmail1">Phương Án B</label>
-                                        <input type="text" class="form-control" id="phuong_an_B"  name="phuong_an_B" required="">
+                                        <input type="text" class="form-control" id="phuong_an_B"  name="phuong_an_B">
                                     </div>
                                   
                                   <div class="form-group">
                                         <label for="exampleInputEmail1">Phương Án C</label>
-                                        <input type="text" class="form-control" id="phuong_an_C"  name="phuong_an_C" required="">
+                                        <input type="text" class="form-control" id="phuong_an_C"  name="phuong_an_C" >
                                     </div>
                                   <div class="form-group">
                                         <label for="exampleInputEmail1">Phương Án D</label>
-                                        <input type="text" class="form-control" id="phuong_an_D"  name="phuong_an_D" required="">
+                                        <input type="text" class="form-control" id="phuong_an_D"  name="phuong_an_D">
                                     </div>
                                     <!-- <div class="form-group">
                                         <label for="exampleInputEmail1">Đáp Án</label>
