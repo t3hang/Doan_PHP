@@ -18,20 +18,43 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 Route::namespace('API')->group(function()
 {
-	Route::prefix('linh-vuc')->group(function(){
-	Route::get('/','LinhVucAPI@DSLinhVuc');
-	});
-	Route::prefix('goi-credit')->group(function() {
+
+	Route::middleware('jwt.auth')->group(function() {
+
+
+		Route::prefix('linh-vuc')->group(function(){
+			Route::get('/','LinhVucAPI@DSLinhVuc');
+		});
+
+
+		Route::prefix('goi-credit')->group(function() {
 			Route::get('/', 'GoiCreditAPI@DSGoiCredit');
 			Route::get('/{id}', 'GoiCreditAPI@ChiTietGoiCredit');
 		});
-	Route::prefix('nguoi-choi')->group(function() {
+
+
+		Route::prefix('nguoi-choi')->group(function() {
 			Route::get('/', 'NguoiChoiAPI@xepHang');
 			Route::get('/{id}', 'NguoiChoiAPI@ChiTietNguoiChoi');		
 		});
-	Route::get('xep-hang', "NguoiChoiAPI@xepHang");
+
+
+		Route::get('xep-hang', "NguoiChoiAPI@xepHang");
+
+		Route::get('cau-hoi', 'CauHoiAPI@cauHoiTheoLinhVuc');
+
+
+
+	});
+
+	
 // 	Route::prefix('cau-hoi')->group(function(){
 // 	Route::get('/{id}','CauHoiAPI@DScauhoi');
 // });
-	Route::get('cau-hoi', 'CauHoiAPI@cauHoiTheoLinhVuc');
+
+
+
+
+	Route::post('dang-nhap', 'DangNhapAPI@dangNhap');
+
 });

@@ -10,6 +10,10 @@
 // | contains the "web" middleware group. Now create something great!
 // |
 
+Route::get('/', function() {
+	return redirect('linh-vuc');
+});
+
 route::middleware("auth")->group(function(){
 Route::prefix('linh-vuc')->group(function()
 {

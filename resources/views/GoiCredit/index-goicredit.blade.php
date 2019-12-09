@@ -62,82 +62,80 @@
         <!-- third party css end -->
  @endsection
 @section('content')
- <div>
-             @include('ThongBao.success')
-             @include('ThongBao.errors')
-        </div>
-<div class="row">
-    <div class="col-8">
-       
-        <div class="card">
-            <div class="card-body">
-                <h4 class="header-title">Gói Credit</h4>
-                <table id="goicredit-datatable" class="table activate-select dt-responsive nowrap">
-                    <thead>
-                        <tr>
-                            <th>ID</th>
-                              <th>Tên gói</th>
-                              <th>Credit</th>
-                              <th>Số tiền</th>
-                            <td></td>
-                        </tr>
-                    </thead>
-        
-                    <tbody>
-                        @foreach($dsGoiCredit as $goiCredit)
-                        <tr>
-                            <td>{{ $goiCredit->id }}</td>
-                            <td>{{ $goiCredit->Ten_goi }}</td>
-                            <td>{{ $goiCredit->Credit }}</td>
-                            <td>{{ $goiCredit->So_tien }}</td>
-                            <td>
-                            <form action="{{ route('goi-credit.remove', ['id' => $goiCredit->id ]) }}" method="POST">
-                                {{ csrf_field() }}
-                                {{ method_field('DELETE') }}
-                              <a href="{{ route('goi-credit.edit',['id' =>$goiCredit->id]) }}" type="button" class="btn btn-purple waves-effect waves-light"><i class="mdi mdi-pencil-plus">Sửa</i></a> 
-                              <button type="submit" class="btn btn-danger waves-effect waves-light xoa-goi-credit"><i class=" mdi mdi-trash-can-outline">Xóa</i></button>
-                            </td>
-                        </tr>
-                         @endforeach
-                        
-                    </tbody>
-                </table>
-                <a href="{{ route('goi-credit.create') }}" class="btn btn-primary waves-effect waves-light"><i class=" mdi mdi-content-save-all"> Thêm</i></a>
-            </div> <!-- end card body-->
-        </div> <!-- end card -->
-    </div><!-- end col-->
-    <div class="col-4">
-        <div class="card">
+    @include('ThongBao.success')
+    @include('ThongBao.errors')
+    <div class="row">
+        <div class="col-8">
+            <div class="card">
+                <div class="card-body">
+                    <h4 class="header-title">Gói Credit</h4>
+                    <table id="goicredit-datatable" class="table activate-select dt-responsive nowrap">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                  <th>Tên gói</th>
+                                  <th>Credit</th>
+                                  <th>Số tiền</th>
+                                <td></td>
+                            </tr>
+                        </thead>
+            
+                        <tbody>
+                            @foreach($dsGoiCredit as $goiCredit)
+                            <tr>
+                                <td>{{ $goiCredit->id }}</td>
+                                <td>{{ $goiCredit->Ten_goi }}</td>
+                                <td>{{ $goiCredit->Credit }}</td>
+                                <td>{{ $goiCredit->So_tien }}</td>
+                                <td>
+                                <form action="{{ route('goi-credit.remove', ['id' => $goiCredit->id ]) }}" method="POST">
+                                    {{ csrf_field() }}
+                                    {{ method_field('DELETE') }}
+                                  <a href="{{ route('goi-credit.edit',['id' =>$goiCredit->id]) }}" type="button" class="btn btn-purple waves-effect waves-light"><i class="mdi mdi-pencil-plus">Sửa</i></a> 
+                                  <button type="submit" class="btn btn-danger waves-effect waves-light xoa-goi-credit"><i class=" mdi mdi-trash-can-outline">Xóa</i></button>
+                                </form>
+                                </td>
+                            </tr>
+                             @endforeach
+                            
+                        </tbody>
+                    </table>
+
+                </div> <!-- end card body-->
+            </div> <!-- end card -->
+        </div><!-- end col-->
+        <div class="col-4">
+            <div class="card">
                 <div class="card-body">
                     <h4 class="mb-3 header-title">Thêm gói credit</h4>
 
-                    <form action="{{ route('goi-credit.store') }}" method="POST" >
-                     {{ csrf_field() }}
+                    <form action="{{ route('goi-credit.store') }}" method="POST">
+
+                        @csrf
 
                         <div class="form-group">
                             <label for="exampleInputEmail1">Tên gói</label>
                             <input type="text" class="form-control" id="Ten_goi" name="Ten_goi">
                         </div>
                     
-                      <div class="form-group">
+                        <div class="form-group">
                             <label for="exampleInputEmail1">Credit</label>
                             <input type="text" class="form-control" id="Credit" name="Credit">
                         </div>
                       
-                      <div class="form-group">
+                        <div class="form-group">
                             <label for="exampleInputEmail1">Số Tiền</label>
                             <input type="number" class="form-control" id="So_tien"  name="So_tien">
                         </div>
                        
                         <button type="submit" class="btn btn-primary waves-effect waves-light"><i class=" mdi mdi-content-save-all"> Thêm</i></button>
-                     
                          
                     </form>
 
                 </div> <!-- end card-body-->
-            </div> <!-- end card-->
+                </div> <!-- end card-->
+            </div>
         </div>
     </div>
-</div>
 
 @endsection

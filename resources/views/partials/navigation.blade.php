@@ -222,8 +222,9 @@
                                       <li>
                                         <a href="{{ route('linh-vuc.index') }}">Danh sách Lĩnh Vực</a>
                                       </li>
-                                      <li>
+                                     <!--  <li>
                                         <a href="{{ route('linh-vuc.create') }}">Thêm Lĩnh Vực</a>
+                                    </li> -->
                                         <li>
                                         <a href="{{ route('linh-vuc.trash') }}">Danh sách đã xóa</a>
                                       </li>
@@ -265,9 +266,9 @@
                                       <li>
                                         <a href="{{ route('goi-credit.index') }}">Danh sách gói credit</a>
                                       </li>
-                                      <li>
+                                      <!-- <li>
                                         <a href="{{ route('goi-credit.create') }}">Thêm gói credit</a>
-                                      </li>
+                                      </li> -->
                                       <li>
                                         <a href="{{ route('goi-credit.trash') }}">Danh sách xóa</a>
                                       </li>
