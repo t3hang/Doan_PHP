@@ -54,4 +54,5 @@ class NguoiChoiAPI extends Controller
 			];
     	return response()->json($res);
     }
+
 }
