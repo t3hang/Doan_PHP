@@ -39,27 +39,15 @@ Route::namespace('API')->group(function()
 			Route::get('/', 'NguoiChoiAPI@xepHang');
 			Route::get('/{id}', 'NguoiChoiAPI@ChiTietNguoiChoi');		
 		});
-
-
 		Route::get('xep-hang', "NguoiChoiAPI@xepHang");
 		Route::get('cau-hoi', 'CauHoiAPI@cauHoiTheoLinhVuc');
 		Route::post('luu-luot-choi', 'LuotChoiAPI@luuLuotChoi');
-
-
-
-
 	});
 
-	
 // 	Route::prefix('cau-hoi')->group(function(){
 // 	Route::get('/{id}','CauHoiAPI@DScauhoi');
 // });
-
-
-
-
 	Route::post('dang-nhap', 'DangNhapAPI@dangNhap');
-
 	Route::post('dang-ky', 'DangNhapAPI@dangKy');
 
 });
