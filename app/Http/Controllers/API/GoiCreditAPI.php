@@ -18,14 +18,14 @@ class GoiCreditAPI extends Controller
     		return response()->json($res);
     }
 
-    public function ChiTietGoiCredit($id)
+      public function ChiTietGoiCredit($id)
     {
             $goicredit = GoiCredit::find($id);
             $res = [
                 "success"   => true,
                 "data"      => $goicredit
             ];
-    		return response()->json($res);
+            return response()->json($res);
     }
     public function muaGoiCredit (Request $request)
     {

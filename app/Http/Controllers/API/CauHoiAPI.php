@@ -11,27 +11,21 @@ class CauHoiAPI extends Controller
  public function cauHoiTheoLinhVuc(Request $request)
     {
         $linhVuc = $request->query('linh_vuc');
-        $cauhoi = CauHoi::
-                        where('linh_vuc_id', $linhVuc)
-                            ->get();
-        if (count($cauhoi))
+        $cauhoi = CauHoi::where('linh_vuc_id', $linhVuc)->get();
+        if (count($cauhoi) === 0)
         {
             $res = [
-                'success' => true,
-                'msg'     => 'Load câu hỏi thành công',
-                'data'    => $cauhoi->random(1)->first()
+                'success'   => false,
+                'msg'       => 'Không tìm thấy câu hỏi tương ứng'
             ];
-            return \response()->json($res);
+            return response()->json($res);
         }
-
         $res = [
-            'success'   => false,
-            'msg'       => 'Load câu hỏi thất bại'
+            'success'   => true,
+            'msg'       => 'Tải câu hỏi thành công',
+            'data'      => $cauhoi
         ];
-        return \response()->json($res, 400);
-        
-
-            
+        return response()->json($res);      
 
 }
 //         public function DScauhoi($id)
