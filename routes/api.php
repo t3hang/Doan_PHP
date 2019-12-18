@@ -19,7 +19,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::namespace('API')->group(function()
 {
 
-	Route::middleware('jwt.auth')->group(function() {
+	Route::middleware(['assign.guard:api','jwt.auth'])->group(function() {
 
 
 		Route::prefix('linh-vuc')->group(function(){
@@ -48,6 +48,7 @@ Route::namespace('API')->group(function()
 // 	Route::get('/{id}','CauHoiAPI@DScauhoi');
 // });
 	Route::post('dang-nhap', 'DangNhapAPI@dangNhap');
+	Route::post('thongtin', 'DangNhapAPI@LayThongTin');
 	Route::post('dang-ky', 'DangNhapAPI@dangKy');
 
 });

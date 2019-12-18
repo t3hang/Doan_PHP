@@ -44,8 +44,7 @@ return [
         'api' => [
             'driver' => 'jwt',
             'provider' => 'NguoiChoi',
-            'hash' => false,
-        ],
+       ],
     ],
 
     /*

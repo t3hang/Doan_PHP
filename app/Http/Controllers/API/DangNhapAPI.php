@@ -29,6 +29,10 @@ class DangNhapAPI extends Controller
         ];
         return \response()->json($res);
     }
+    public function LayThongTin()
+    {
+        return auth('api')->user();
+    }
     public function dangXuat()
     {
         auth('api')->logout();

@@ -106,7 +106,7 @@
                                         
                                 </tbody>
                                 </table>
-                                <a href="{{ route('nguoi-choi.create') }}" class="btn btn-primary waves-effect waves-light">Thêm</a>
+                               
 
                             </div> <!-- end card body-->
                         </div> <!-- end card -->
