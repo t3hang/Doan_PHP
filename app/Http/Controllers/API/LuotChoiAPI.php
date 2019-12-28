@@ -10,9 +10,9 @@ class LuotChoiAPI extends Controller
     public function luuLuotChoi (Request $request)
 	{
 		$luotChoi = [
-                'nguoi_choi_id'  => $request->nguoi_choi_id,
-                'so_cau'         => $request->so_cau,
-                'diem'     		 => $request->diem
+                'Nguoi_choi_id'  => $request->Nguoi_choi_id,
+                'So_Cau'         => $request->So_Cau,
+                'Dem'     		 => $request->Dem
             ];
         $kq = LuotChoi::create($luotChoi);
         if(!$kq)

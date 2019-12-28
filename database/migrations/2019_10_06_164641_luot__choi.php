@@ -19,7 +19,7 @@ class LuotChoi extends Migration
             $table->integer('So_Cau');
             $table->string('Dem');
             $table->string('Ngay_gio');
-             $table->foreign('Nguoi_choi_id')->references('id')->on('Nguoi_Choi')->onDelete('cascade');
+            $table->foreign('Nguoi_choi_id')->references('id')->on('Nguoi_Choi')->onDelete('cascade');
             $table->timestamps();
         });
     }

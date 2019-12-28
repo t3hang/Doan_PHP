@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateQuanTriViensTable extends Migration
+class QuanTriVien extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +14,13 @@ class CreateQuanTriViensTable extends Migration
     public function up()
     {
         Schema::create('quan_tri_vien', function (Blueprint $table) {
-            $table->increments('id');
+            $table->bigIncrements('id');
+            $table->timestamps();
             $table->string('ten_dang_nhap');
             $table->string('mat_khau');
             $table->string('ho_ten');
             $table->rememberToken();
             $table->softDeletes();
-
-            $table->timestamps();
         });
     }
 
