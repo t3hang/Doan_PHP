@@ -5,6 +5,11 @@ namespace App\Http\Controllers\API;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\NguoiChoi;
+use App\QuenMatKhau;
+use App\Mail\SendMail;
+use Illuminate\Support\Facades\Hash;
+use App\Jobs\SendMailJob;
+
 class DangNhapAPI extends Controller
 {
     //
@@ -73,6 +78,37 @@ class DangNhapAPI extends Controller
             'expires'   => auth('api')->factory()->getTTL() * 60 * 24 * 7
             ];
             return \response()->json($res);
+    }
+
+    public function quenMatKhau(Request $req)
+    {
+        SendMailJob::dispatch($req->email);
+
+        $res = [
+           'success' => true,
+           'msg'     => 'Vui long vao email lay ma xac nhan'
+        ];
+        return response()->json($res);
+    }
+
+    public function lamMoiMatKhau(Request $req)
+    {
+        $date = Carbon::now();
+        $ketQua = QuenMatKhau::where('email', $req->email)
+                            ->where('ma_xac_nhan', $req->ma_xac_nhan)
+                            ->first();
+        $hanSuDung = $ketQua->han_su_dung; 
+        // dd($ketQua);
+        if($date->lte($hanSuDung))
+        {
+            $a = NguoiChoi::where('email', $req->email)->update(['mat_khau'  => Hash::make($req->mat_khau)]);
+            dd($a);
+        }
+        $res = [
+           'success' => false,
+           'msg'     => 'Mã xác nhận sai hoặc hết hạn, vui lòng thử lại'
+        ];
+        return response()->json($res);
     }
 
 }

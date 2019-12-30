@@ -50,5 +50,6 @@ Route::namespace('API')->group(function()
 	Route::post('dang-nhap', 'DangNhapAPI@dangNhap');
 	Route::post('thongtin', 'DangNhapAPI@LayThongTin');
 	Route::post('dang-ky', 'DangNhapAPI@dangKy');
-
+	Route::post('quen-mat-khau', 'DangNhapAPI@quenMatKhau');
+	Route::post('lam-moi-mat-khau', 'DangNhapAPI@lamMoiMatKhau');
 });
