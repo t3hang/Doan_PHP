@@ -9,6 +9,7 @@ use App\QuenMatKhau;
 use App\Mail\SendMail;
 use Illuminate\Support\Facades\Hash;
 use App\Jobs\SendMailJob;
+use Carbon\Carbon;
 
 class DangNhapAPI extends Controller
 {
@@ -97,18 +98,27 @@ class DangNhapAPI extends Controller
         $ketQua = QuenMatKhau::where('email', $req->email)
                             ->where('ma_xac_nhan', $req->ma_xac_nhan)
                             ->first();
+        if ($ketQua == null) {
+            $res = [
+               'success' => false,
+               'msg'     => 'Có lỗi xảy ra, vui lòng thử lại'
+            ];
+            return response()->json($res);
+        }
         $hanSuDung = $ketQua->han_su_dung; 
         // dd($ketQua);
         if($date->lte($hanSuDung))
         {
             $a = NguoiChoi::where('email', $req->email)->update(['mat_khau'  => Hash::make($req->mat_khau)]);
-            dd($a);
+            return response()->json(['success'  => true ]);
         }
         $res = [
            'success' => false,
            'msg'     => 'Mã xác nhận sai hoặc hết hạn, vui lòng thử lại'
         ];
         return response()->json($res);
+        
+        
     }
 
 }
