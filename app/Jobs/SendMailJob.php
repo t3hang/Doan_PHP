@@ -41,7 +41,7 @@ class SendMailJob implements ShouldQueue
             ['email' => $this->email],
             [
                 'ma_xac_nhan'  => $code,
-                'han_su_dung'  => Carbon::now()->addMinute(1)
+                'han_su_dung'  => Carbon::now()->addMinutes(5)
             ]
         );
         Mail::to($this->email)

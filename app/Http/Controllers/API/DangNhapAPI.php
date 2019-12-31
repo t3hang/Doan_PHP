@@ -10,6 +10,7 @@ use App\Mail\SendMail;
 use Illuminate\Support\Facades\Hash;
 use App\Jobs\SendMailJob;
 use Carbon\Carbon;
+use Validator;
 
 class DangNhapAPI extends Controller
 {
@@ -83,6 +84,22 @@ class DangNhapAPI extends Controller
 
     public function quenMatKhau(Request $req)
     {
+        $valid = Validator::make(
+            $req->all(),
+            [
+                'email' => 'required|email:rfc|exists:nguoi_choi,email'
+            ],
+            [
+                'email.required'    => 'Email không để trống',
+                'email.email'       => 'Không đúng định dạng email',
+                'email.exists'      => 'Email không tồn tại',
+            ]
+        );
+
+        if (!$valid->passes()) {
+            return \response()->json(['success' => false, 'msg' => $valid->errors()->first()]);
+        }
+
         SendMailJob::dispatch($req->email);
 
         $res = [
@@ -94,7 +111,29 @@ class DangNhapAPI extends Controller
 
     public function lamMoiMatKhau(Request $req)
     {
-        $date = Carbon::now();
+
+        $valid = Validator::make(
+            $req->all(),
+            [
+                'email'         => 'required|email:rfc|exists:nguoi_choi,email',
+                'ma_xac_nhan'   => 'required',
+                'mat_khau'      => 'required|min:6|max:30',
+            ],
+            [
+                'email.required'        => 'Email không để trống',
+                'email.email'           => 'Không đúng định dạng email',
+                'email.exists'          => 'Email không tồn tại',
+                'ma_xac_nhan.required'  => 'Mã xác nhận không để trống',
+                'mat_khau.required'     => 'Mật khẩu không để trống',
+                'mat_khau.min'          => 'Mật khẩu tối thiểu 6 ký tự',
+                'mat_khau.max'          => 'Mật khẩu tối đa 30 ký tự'
+            ]
+        );
+
+        if (!$valid->passes()) {
+            return \response()->json(['success' => false, 'msg' => $valid->errors()->first()]);
+        }
+
         $ketQua = QuenMatKhau::where('email', $req->email)
                             ->where('ma_xac_nhan', $req->ma_xac_nhan)
                             ->first();
@@ -106,17 +145,23 @@ class DangNhapAPI extends Controller
             return response()->json($res);
         }
         $hanSuDung = $ketQua->han_su_dung; 
-        // dd($ketQua);
+        $date = Carbon::now();
         if($date->lte($hanSuDung))
         {
-            $a = NguoiChoi::where('email', $req->email)->update(['mat_khau'  => Hash::make($req->mat_khau)]);
-            return response()->json(['success'  => true ]);
+            NguoiChoi::where('email', $req->email)->update(['mat_khau'  => Hash::make($req->mat_khau)]);
+            $ketQua->forceDelete();
+            $res = [
+               'success' => true,
+               'msg'     => 'Đổi mật khẩu thành công'
+            ];
+            return response()->json($res);
+        } else {
+            $res = [
+               'success' => false,
+               'msg'     => 'Mã xác nhận sai hoặc hết hạn, vui lòng thử lại'
+            ];
+            return response()->json($res);   
         }
-        $res = [
-           'success' => false,
-           'msg'     => 'Mã xác nhận sai hoặc hết hạn, vui lòng thử lại'
-        ];
-        return response()->json($res);
         
         
     }
